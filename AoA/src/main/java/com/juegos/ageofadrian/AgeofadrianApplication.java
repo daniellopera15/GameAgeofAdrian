@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AgeofadrianApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(AgeofadrianApplication.class, args);
+
 	}
 }
