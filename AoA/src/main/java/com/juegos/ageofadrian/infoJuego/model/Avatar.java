@@ -1,6 +1,7 @@
 package com.juegos.ageofadrian.infoJuego.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +17,9 @@ public class Avatar {
     private String descripcion;
     private Integer nivel;
     private Long dinero;
+   /* @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;*/
+    private String rol;
     @OneToOne
     private Ejercito ejercito;
 
@@ -78,6 +82,23 @@ public class Avatar {
 
     public void setDinero(Long dinero) {
         this.dinero = dinero;
+    }
+/*
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+*/
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public Ejercito getEjercito() {

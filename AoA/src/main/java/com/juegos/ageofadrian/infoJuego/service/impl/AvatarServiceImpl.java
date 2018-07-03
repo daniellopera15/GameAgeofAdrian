@@ -4,6 +4,7 @@ import com.juegos.ageofadrian.infoJuego.model.Avatar;
 import com.juegos.ageofadrian.infoJuego.repository.AvatarRepository;
 import com.juegos.ageofadrian.infoJuego.service.AvatarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +17,13 @@ public class AvatarServiceImpl implements AvatarService {
     @Autowired
     private AvatarRepository avatarRepository;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     @Override
     public Avatar crearAvatar(Avatar avatar) {
+        String password = encoder.encode(avatar.getPassword());
+        avatar.setPassword(password);
         return avatarRepository.save(avatar);
     }
 
@@ -41,5 +47,10 @@ public class AvatarServiceImpl implements AvatarService {
     @Override
     public List<Avatar> listarAvatares() {
         return avatarRepository.findAll();
+    }
+
+    @Override
+    public Avatar buscarAvatar(String nombre) {
+        return avatarRepository.findByNombre(nombre);
     }
 }

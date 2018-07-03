@@ -20,15 +20,24 @@ public class AvatarController {
     @Autowired
     private AvatarService avatarService;
 
-    @RequestMapping(value = "/crearAvatar", method = RequestMethod.POST)
-    public ResponseEntity<Avatar> crearAvatar(@RequestBody Avatar avatar) throws AvatarErrorException {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<Avatar> registrarAvatar(@RequestBody Avatar avatar) throws AvatarErrorException {
         Avatar avatarNuevo = avatarService.crearAvatar(avatar);
         if (avatarNuevo == null)
             throw new AvatarErrorException("No se pudo crear el avatar");
 
         return ResponseEntity.ok(avatarNuevo);
     }
+/*
+    @RequestMapping(value = "/login/{nombre}", method = RequestMethod.POST)
+    public ResponseEntity<Avatar> buscarAvatar(@PathVariable String nombre) throws AvatarErrorException {
+        Avatar avatar = avatarService.buscarAvatar(nombre);
+        if (avatar == null)
+            throw new AvatarErrorException("No se pudo encontrar el avatar");
 
+        return ResponseEntity.ok(avatar);
+    }
+*/
     @RequestMapping(value = "/editarAvatar", method = RequestMethod.PUT)
     public ResponseEntity<Avatar> editarAvatar(@RequestBody Avatar avatar) throws AvatarNotFoundException {
         Avatar avatarEditado = avatarService.editarAvatar(avatar);

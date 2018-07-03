@@ -12,4 +12,6 @@ public interface AvatarService {
     public boolean eliminarAvatar(Long id);
 
     public List<Avatar> listarAvatares();
+
+    public Avatar buscarAvatar(String nombre);
 }
