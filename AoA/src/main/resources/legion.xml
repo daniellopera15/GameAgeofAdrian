@@ -1,0 +1,22 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+    <stream name="legiones" format="csv">
+        <parser>
+            <property name="delimiter" value="," />
+            <property name="lineSeparator" value="\n" />
+            <property name="whitespaceAllowed" value="true" />
+        </parser>
+        <record name="header" class="map" maxOccurs="1">
+            <!-- 'rid' indicates this field is used to identify the record -->
+            <field name="recordType" rid="true" literal="H" />
+            <!-- 'format' can be used to provide Date and Number formats -->
+            <field name="fileDate" type="date" format="yyyy-MM-dd" />
+        </record>
+        <record name="detail" minOccurs="0" maxOccurs="unbounded"
+                class="com.juegos.ageofadrian.backsrv.EjercitoHandler">
+            <field name="nombre" />
+            <field name="auxiliares" type="int"/>
+            <field name="centuriones" type="int"/>
+            <field name="legionarios" type="int"/>
+        </record>
+    </stream>
+</beanio>
