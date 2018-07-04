@@ -1,42 +1,53 @@
 package com.juegos.ageofadrian.backsrv;
 
 import org.beanio.BeanReader;
+import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class BeanIO {
-    private final String FILE_NAME = "legion.xml";
 
-    public void lecturaCSV(String nombreFileCsv){
+    public List<LegionHandler> lecturaCSV(String nombreFileCsv) {
         StreamFactory factory = StreamFactory.newInstance();
-        factory.load(FILE_NAME);
+        factory.loadResource("legion.xml", null);
 
         //read it from the classpath : src/main/resources
-        InputStream in = this.getClass().getResourceAsStream("/static/"+ nombreFileCsv + ".csv");
+        InputStream in = this.getClass().getResourceAsStream("/static/" + nombreFileCsv + ".csv");
         BeanReader reader = factory.createReader("legiones", new InputStreamReader(in));
         Object record = null;
-        List<EjercitoHandler> ejercitoHandlers = new ArrayList<>();
+        List<LegionHandler> legionHandlers = new ArrayList<>();
 
         // read records from "input.csv"
         while ((record = reader.read()) != null) {
-            if ("header".equals(reader.getRecordName()))
-            {
-
-                @SuppressWarnings("unchecked")
-                Map<String, Object> header = (Map<String, Object>) record;
-                System.out.println(header.get("fileDate"));
-            }
-            else if ("detail".equals(reader.getRecordName())){
-                EjercitoHandler ejercitoHandler = (EjercitoHandler) record;
-                ejercitoHandlers.add(ejercitoHandler);
-            }
+            LegionHandler legionHandler = (LegionHandler) record;
+            legionHandlers.add(legionHandler);
         }
 
-        System.out.println(ejercitoHandlers);
+        try {
+            in.close();
+        } catch (IOException e) {
+            System.out.println("Problemas al leer el archivo " + nombreFileCsv);
+        }
+        //System.out.println(legionHandlers);
+        return legionHandlers;
+    }
+
+    public void escrituraCSV(String nombreFileCsv, List<LegionHandler> legionHandlers) {
+        StreamFactory factory = StreamFactory.newInstance();
+        factory.loadResource("legion.xml", null);
+
+        String userDir = System.getProperty("user.dir");
+
+        BeanWriter writer = factory.createWriter("legiones",
+                new File(userDir + "/AoA/src/main/resources/static/"+nombreFileCsv + ".csv"));
+
+        for (LegionHandler legionHandler : legionHandlers) {
+            writer.write(legionHandler);
+        }
+
+        writer.close();
     }
 }

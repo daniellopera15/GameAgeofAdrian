@@ -1,8 +1,8 @@
 package com.juegos.ageofadrian.backsrv;
 
-public class EjercitoHandler {
+public class LegionHandler {
     private String nombre;
-    private int auxialiares;
+    private int auxiliares;
     private int centuriones;
     private int legionarios;
 
@@ -15,11 +15,11 @@ public class EjercitoHandler {
     }
 
     public int getAuxialiares() {
-        return auxialiares;
+        return auxiliares;
     }
 
     public void setAuxialiares(int auxialiares) {
-        this.auxialiares = auxialiares;
+        this.auxiliares = auxialiares;
     }
 
     public int getCenturiones() {
@@ -40,6 +40,6 @@ public class EjercitoHandler {
 
     @Override
     public String toString() {
-        return nombre+ " " +auxialiares+ " " + centuriones+ " " + legionarios;
+        return nombre+ " " +auxiliares+ " " + centuriones+ " " + legionarios;
     }
 }
