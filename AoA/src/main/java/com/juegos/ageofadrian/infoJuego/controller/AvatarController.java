@@ -15,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/avatar")
+@CrossOrigin
 public class AvatarController {
 
     @Autowired

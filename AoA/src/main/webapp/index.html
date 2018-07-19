@@ -5,26 +5,38 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>AoA</title>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="public/assets/css/main.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-		<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+<head>
+	<title>AoA</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="public/assets/css/main.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-storage/0.0.15/angular-storage.js" >
+	</script> 
 
 
-		<script src="public/assets/js/miapp.js"></script>
-	</head>
-	<body class="landing is-preload" ng-app="miapp">
+
+	<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+	
+	
+
+	<script src="public/assets/js/miapp.js"></script>
+	<script src="services/conectionServerService.js"></script>
+
+</head>
+	<body ng-app="miapp" ng-controller="micontrol" >
 
 
 	<!-- Header -->
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 			<a class="navbar-brand" href="#">Age Of Adrian</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -33,7 +45,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class ="titulonav ">Se parte del final de una era</a>
+						<a class ="titulonav">Se parte del final de una era</a>
 					</li>
 
 				</ul>
@@ -41,24 +53,30 @@
 					<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
 					<button class="btn btn-outline-warning my-1 my-sm-1 boton" type="submit">Buscar</button>
 				</form>
+
 			</div>
-	</nav>
+		</nav>
+		<!--dinamic section-->
+
+		
+		
+		
+		<div class="fondo" ui-view></div>
+
+
 		<!--dinamic section-->
 
 
-		<div ui-view></div>
-
-
-		<!--dinamic section-->
-
-
-			<!-- Footer -->
+		<!-- Footer -->
 		<footer id="footer">
 
-				<ul class="copyright">
-					<li>&copy; Age Of Adrian. All rights reserved.</li><li>Design: <a href="http://chamo.net">chamo lopera</a></li>
-				</ul>
+			<ul class="copyright">
+				<li>&copy; Age Of Adrian. All rights reserved.</li><li>Design: <a href="http://chamo.net">chamo lopera</a></li>
+			</ul>
 		</footer>
+	
+	
 
-	</body>
+
+</body>
 </html>

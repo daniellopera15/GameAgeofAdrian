@@ -9,7 +9,7 @@ public class AgeofadrianApplication {
 
 	public static void main(String[] args) {
 		BeanIO beanio = new BeanIO();
-		beanio.lecturaCSV("LegionesPrimeraVersion");
+		//beanio.lecturaCSV("LegionesPrimeraVersion");
 		SpringApplication.run(AgeofadrianApplication.class, args);
 
 	}

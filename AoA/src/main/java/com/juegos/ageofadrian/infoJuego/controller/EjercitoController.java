@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/ejercito")
+@CrossOrigin
 public class EjercitoController {
 
     @Autowired
